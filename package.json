@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "node backend/server.js",
+    "devo": "nodemon backend/server.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -11,16 +13,19 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
+    "axios": "^1.6.7",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-full-screen": "^1.1.1",
     "react-hook-form": "^7.50.1",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.1",
-    "react-youtube": "^10.1.0"
+    "react-youtube": "^10.1.0",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
