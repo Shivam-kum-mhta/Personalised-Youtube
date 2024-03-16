@@ -6,13 +6,14 @@ import Alert from './components/Alert'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import About from './components/About'
 import Home from './components/Home'
+import History from './components/History'
 
 
 
 function App() {
 
 
-
+  const [Histor, setHistor]=useState([])
   const [hamberger, setHamberger] = useState(false);
   function showHamberger(){
     if(hamberger==false)
@@ -46,6 +47,8 @@ function App() {
     }
   }
 
+
+  
   const [mode, setMode]=useState(true)
   const [antimode,setAntimode]=useState(false)
 
@@ -53,11 +56,15 @@ function App() {
     {path:"/About" ,
   element: <><Nav showmode={showmode} /><About/></>},
     {path:"/" ,
-  element: <><Nav showHamberger={showHamberger} showluv={showluv} showmode={showmode}  handleSearchChange={handleSearchChange} searchInput={searchInput} /><Home hamberger={hamberger} searchInput={searchInput} setSearchInput={setSearchInput}  showluv={showluv} /></>},
+  element: <><Nav  showHamberger={showHamberger} showluv={showluv} showmode={showmode}  handleSearchChange={handleSearchChange} searchInput={searchInput} />
+  <Home Histor={Histor} setHistor={setHistor} hamberger={hamberger} searchInput={searchInput} setSearchInput={setSearchInput}  showluv={showluv} /></>},
  
   {path:"/Features" ,
   element: <><Nav  showmode={showmode} /><Features /></>},
-
+ 
+  {path:"/Saved" ,
+  element: <><Nav  showmode={showmode}   setHistory={setHistor}/><History  Histor={Histor} /></>},
+ 
   ])
 
   

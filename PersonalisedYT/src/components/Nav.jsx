@@ -7,22 +7,32 @@ function Nav ({searchInput, showHamberger ,showmode , handleSearchChange}){
  const btn1 =useRef('.red')
  const btn2 =useRef(null)
  const btn3 =useRef(null)
+ const btn4 =useRef(null)
  
     
    function handlevent3(){
     btn3.current.style.backgroundColor="red"
     btn2.current.style.backgroundColor=null
     btn1.current.style.backgroundColor=null
+    btn4.current.style.backgroundColor=null
    }
    function handlevent2(){
     btn3.current.style.backgroundColor=null
     btn2.current.style.backgroundColor="red"
     btn1.current.style.backgroundColor=null
+    btn4.current.style.backgroundColor=null
    }
    function handlevent1(){
     btn3.current.style.backgroundColor=null
     btn2.current.style.backgroundColor=null
     btn1.current.style.backgroundColor="red"
+    btn4.current.style.backgroundColor=null
+   }
+   function handlevent4(){
+    btn1.current.style.backgroundColor=null
+    btn3.current.style.backgroundColor=null
+    btn2.current.style.backgroundColor=null
+    btn4.current.style.backgroundColor="red"
    }
 
     return(
@@ -34,10 +44,12 @@ function Nav ({searchInput, showHamberger ,showmode , handleSearchChange}){
         <line x1="3" y1="18" x2="21" y2="18"></line>
     </svg>
         <div className="logo" style={{ padding: "7px", textDecorationStyle: "solid", backgroundImage: "linear-gradient(to right,rgb(255, 0, 242),  rgb(0, 68, 255))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",}}><h2>Personalised YT</h2></div>
-    <NavLink to="/"><button className="link" style={{backgroundColor:'red'}} ref={btn1} onClick={handlevent1}>Home</button></NavLink>
+    <NavLink to="/"><button className="link"  ref={btn1} onClick={handlevent1}>Home</button></NavLink>
     <NavLink to="/About"><button className="link" ref={btn2} onClick={handlevent2}>About</button></NavLink>
     <NavLink to="/Features"><button className="link" ref={btn3} onClick={handlevent3} >Features</button></NavLink> 
-
+ 
+    <NavLink to="/Saved"><button className="link" ref={btn4} onClick={handlevent4}>Saved</button></NavLink> 
+ 
 
     <SearchBar searchInput={searchInput} handleSearchChange={handleSearchChange} />
        <div className="mode" onClick={showmode} style={{ right:'40px', cursor:'pointer',  color:'green'}}>Change Mode</div></nav>      
