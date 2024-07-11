@@ -4,8 +4,8 @@
 1. Clone the repository
 2. Navigate to the project directory.
 3. Get into PersonalisedYT folder by code --r "./PersonalisedYT"  
-4. Make sure you have nodejs and npm installed in your pc of better versions then run:  npm i
-5.Then enter : npm run dev or npm start.
+4. Make sure you have nodejs and npm installed in your pc of better versions then run  npm i
+   next run : npm run dev
 6. Click on the localhost link generated in the terminal.
 
 
