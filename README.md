@@ -3,10 +3,17 @@
 ### Starting the Application
 1. Clone the repository
 2. Navigate to the project directory.
-3. Get into PersonalisedYT folder by code --r "./PersonalisedYT"  
-4. Make sure you have nodejs and npm installed in your pc of better versions then run  npm i
-   next run : npm run dev
-6. Click on the localhost link generated in the terminal.
+   ```bash
+      cd PersonalisedYT
+   ```
+3. Make sure you have nodejs and npm installed in your pc of better versions then run
+   ```bash
+       npm i
+   ```
+   ```bash
+    npm run dev
+   ```
+4.Voila! Click on the localhost link generated in the terminal.
 
 
 ### Documentation for Personalised Youtube App
