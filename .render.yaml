@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: ViteReactApp
+    env: static
+    staticPublishPath: client/dist
+    buildCommand: npm install && npm run build
