@@ -1,95 +1,51 @@
-import { useEffect, useRef, useState } from 'react'
-import './App.css'
-import Nav from './components/Nav'
-import Features from './components/Features'
-import Alert from './components/Alert'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import About from './components/About'
-import Home from './components/Home'
-import History from './components/History'
-
-
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import './App.css';
+//import './Home.jsx';
 function App() {
+  const [articles, setArticles] = useState([]);
+  const [keyword, setKeyword] = useState('');
 
-
-  const [Histor, setHistor]=useState([])
-  const [hamberger, setHamberger] = useState(false);
-  function showHamberger(){
-    if(hamberger==false)
-    setHamberger(true)
-    else
-    setHamberger(false)
-  }
-  const [luv, setluv]=useState("")
-  
-  function showluv(message,type){
-    setluv({message:message,type:1})
-  setTimeout(() => {
-    setluv({"" : 0})
-  }, 3500);}
-
-  const [searchInput, setSearchInput] = useState('');
-  
-  const handleSearchChange = (e) => {
-    let ser=e.target.value
-    setSearchInput(ser);
-    setluv({"searching":1})
+  const searchNews = async () => {
+    try {
+      const response = await 
+      axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-09-01&sortBy=publishedAt&apiKey=0d0df4aabd5a4015bbe4fb6a69b322bb', { keyword });
+      setArticles(response.data.articles);
+    } catch (error) {
+      console.error('Error fetching articles', error);
+    }
   };
 
-  function showmode(){
-    if(mode==false){
-    setMode(true)
-    setAntimode(false)}
-    else{
-      setMode(false)
-      setAntimode(true)
-    }
-  }
+  return (
+    <div className="App">
+      <h1>NewsFeedGenerator</h1>
+      <div>
 
+        <input
+            type="text"
+          placeholder="Enter keyword"
+            value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button onClick={searchNews}>Search</button>
+      </div>
+      <div className="articles">
+        {articles.map((article, index) => (
+          <div className="card" key={index}>
+            <img src={article.urlToImage} alt={article.title} />
+            <h3>{article.title}</h3>
 
-  
-  const [mode, setMode]=useState(true)
-  const [antimode,setAntimode]=useState(false)
+            <p>{article.description}</p>
 
-  const router= createBrowserRouter([
-    {path:"/About" ,
-  element: <><Nav showmode={showmode} /><About/></>},
-    {path:"/" ,
-  element: <><Nav  showHamberger={showHamberger} showluv={showluv} showmode={showmode}  handleSearchChange={handleSearchChange} searchInput={searchInput} />
-  <Home Histor={Histor} setHistor={setHistor} hamberger={hamberger} searchInput={searchInput} setSearchInput={setSearchInput}  showluv={showluv} /></>},
- 
-  {path:"/Features" ,
-  element: <><Nav  showmode={showmode} /><Features /></>},
- 
-  {path:"/Saved" ,
-  element: <><Nav  showmode={showmode}   setHistory={setHistor}/><History  Histor={Histor} /></>},
- 
-  ])
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              Read More
+            </a>
+          </div>
+        ))}
+      </div>
 
-  
-
- 
-
-  useEffect(() => {
-    alert("PERSONALISED YOUTUBE INITIATED!")
-  }, [])
-
-
-
-  return (<>
-  { !(mode) &&
-  <div style={{backgroundImage: 'linear-gradient(to right, rgb(211, 173, 173),rgba(255, 0, 242, 0.393))', color:'black'}}>
-      <Alert luv={luv}/>
-      <RouterProvider router={router}/>
     </div>
-}
-{!antimode &&  <div >
-      <Alert luv={luv}/>
-      <RouterProvider router={router}/>
-    </div>}
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
